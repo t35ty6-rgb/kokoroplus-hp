@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会員ページ｜こずちゃんのお料理部屋</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F0892A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:var(--paper)}
+.mhd{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #F5EBDD}
+.mhd .w{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1100px}
+.mhd .me{font-size:12px;color:var(--muted)}
+.mhd .me b{display:block;color:var(--orange-d);font-size:13px}
+.welcome{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--cream);border-radius:0 0 80px 0;padding:26px 30px;max-width:1100px;margin:0 auto}
+.welcome img{width:150px;border-radius:50%;border:4px solid #fff}
+.welcome h1{font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.6}
+.welcome p{font-size:14px}
+@media(max-width:600px){.welcome{grid-template-columns:96px 1fr;padding:18px;border-radius:0 0 50px 0}.welcome img{width:96px}}
+.box{background:#fff;border:2px solid var(--line);border-radius:22px;padding:22px 24px}
+.live{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;margin-top:26px}
+.live .dt{width:84px;height:84px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;text-align:center;line-height:1.2;font-weight:700}
+.live .dt b{font-size:24px;display:block}
+.live h3{font-size:16px;color:var(--ink)}
+.live p{font-size:13px;color:var(--muted)}
+@media(max-width:600px){.live{grid-template-columns:auto 1fr}.live .btn{grid-column:1/-1}}
+.sh{display:flex;align-items:center;gap:10px;margin:40px 0 14px;font-size:19px;font-weight:700;color:var(--ink)}
+.sh::before{content:"";width:8px;height:22px;border-radius:4px;background:var(--orange)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.tabs button{flex:none;border:2px solid var(--line);background:#fff;color:var(--text);font-family:inherit;font-weight:700;font-size:14px;border-radius:999px;padding:7px 18px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--orange);border-color:var(--orange);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:16px}
+.rc{background:#fff;border:2px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;padding:0;transition:transform .15s}
+.rc:hover{transform:translateY(-3px)}
+.rc .th{position:relative;aspect-ratio:4/3}
+.rc .th img{width:100%;height:100%;object-fit:cover}
+.rc .th .pl{position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.rc .th .tm{position:absolute;right:10px;bottom:10px;background:rgba(74,58,44,.8);color:#fff;font-size:11px;border-radius:6px;padding:0 8px}
+.rc .new{position:absolute;left:10px;top:10px;background:var(--green);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:0 10px}
+.rc .bd{padding:12px 16px 16px}
+.rc h4{font-size:15px;color:var(--ink);line-height:1.6}
+.rc .tg{display:inline-block;margin-top:6px;font-size:11px;color:var(--orange-d);background:var(--cream);border-radius:999px;padding:0 10px}
+.deli{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
+.deli img{border-radius:16px;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:600px){.deli{grid-template-columns:1fr}}
+.mng{text-align:center;margin:50px 0 30px;font-size:12px}
+.mng a{color:var(--muted);text-decoration:underline}
+/* modal */
+.md{position:fixed;inset:0;z-index:50;background:rgba(74,58,44,.5);display:none;align-items:flex-end;justify-content:center}
+.md.on{display:flex}
+.md .sheet{background:var(--paper);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:0 0 30px}
+.md .vd{position:relative;aspect-ratio:16/9;background:#2c2018}
+.md .vd img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.md .vd .pl{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.md .x{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer;z-index:2}
+.md .in{padding:20px 24px}
+.md h2{font-size:21px;color:var(--ink);line-height:1.5}
+.md .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px}
+.md .meta span{font-size:12px;background:var(--cream);color:var(--orange-d);border-radius:999px;padding:1px 12px;font-weight:700}
+.md h3{font-size:15px;color:var(--orange-d);margin:18px 0 6px}
+.md ul li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0;font-size:14px}
+.md ol{padding-left:0;list-style:none;counter-reset:s;margin:0}
+.md ol li{counter-increment:s;display:flex;gap:12px;padding:8px 0;font-size:14px}
+.md ol li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:3px}
+.md .pt{background:#fff;border:2px solid var(--orange-soft);border-radius:16px;padding:12px 16px;font-size:13.5px;margin-top:16px}
+.md .pt b{color:var(--orange-d)}
+</style>
+</head>
+<body>
+
+<header class="mhd">
+  <div class="w">
+    <a class="logo" href="#"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></i><span>お料理部屋<small>会員ページ</small></span></a>
+    <span class="me"><b id="memberName">会員さん</b>Since 2026.10</span>
+  </div>
+</header>
+
+<div class="welcome">
+  <img src="img/kozu.jpg" alt="こずちゃん">
+  <div>
+    <h1>おかえりなさい！<br>今日はなにをつくろう？</h1>
+    <p>今月の新しいレシピは<span class="mk">4品</span>。気になるものから、ひとつどうぞ。</p>
+  </div>
+</div>
+
+<main class="w" style="max-width:1100px">
+
+  <div class="box live">
+    <span class="dt"><span>10月<b>25</b>土</span></span>
+    <div><h3>会員限定ライブ「はじめての塩麹づくり」</h3><p>10:00〜11:00・Zoom<span class="tbd">〔要確認：日程〕</span><br>材料：米麹200g・塩60g・水300ml</p></div>
+    <a class="btn btn--s" href="#">参加URLを開く</a>
+  </div>
+
+  <p class="sh">レシピ動画</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+
+  <p class="sh">会員さんへの先行案内</p>
+  <div class="box deli">
+    <img src="img/deli.jpg" alt="真空パックのお惣菜">
+    <div>
+      <p style="font-weight:700;color:var(--ink);font-size:16px">こずちゃんのお惣菜セット<span class="tbd">〔準備中〕</span></p>
+      <p style="font-size:14px">ライブでつくった発酵おかずを、真空パックでお届けします。会員さんには一般販売より先にご案内します。</p>
+    </div>
+  </div>
+
+  <p class="mng"><a href="#">解約・お支払いの管理</a></p>
+</main>
+
+<div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mdT">
+  <div class="sheet">
+    <div class="vd"><button class="x" id="mdX" aria-label="閉じる">✕</button><img id="mdI" alt=""><span class="pl"><svg width="28" height="28" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span></div>
+    <div class="in">
+      <h2 id="mdT"></h2>
+      <div class="meta" id="mdM"></div>
+      <h3>材料（2〜3人分）</h3><ul id="mdG"></ul>
+      <h3>作り方</h3><ol id="mdS"></ol>
+      <div class="pt" id="mdP"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// レシピデータ（あとで管理画面・Firestore から読み込む形に差し替え）
+const R=[
+ {c:'主菜',t:'塩麹チキンのこんがり焼き',m:20,k:'塩麹',img:'main',n:1,
+  g:[['鶏もも肉','1枚(300g)'],['塩麹','大さじ1.5'],['ベビーリーフ','適量']],
+  s:['鶏肉の厚い部分を開き、塩麹をもみ込んで30分〜ひと晩おく。','皮目を下にしてフライパンに入れ、中火で6分焼く。','裏返してふたをし、弱火で5分。切り分けて盛る。'],
+  p:'塩麹は<b>焦げやすい</b>ので、焼く前に表面の塩麹を軽くぬぐうのがコツ。'},
+ {c:'主菜',t:'鮭の味噌漬け焼き',m:15,k:'味噌',img:'main',
+  g:[['生鮭','2切れ'],['味噌','大さじ2'],['みりん','大さじ1']],
+  s:['味噌とみりんを混ぜ、鮭にぬってラップで包み、ひと晩おく。','味噌をぬぐい、魚焼きグリルで7〜8分焼く。'],p:'漬けたまま<b>冷凍保存</b>もできます。'},
+ {c:'主菜',t:'豚の塩麹しょうが焼き',m:15,k:'塩麹',img:'main',n:1,
+  g:[['豚ロース薄切り','250g'],['塩麹','大さじ1'],['しょうが','1かけ']],
+  s:['豚肉に塩麹とすりおろしたしょうがをからめ、10分おく。','フライパンで両面を焼く。'],p:'塩麹で<b>お肉がやわらかく</b>仕上がります。'},
+ {c:'副菜',t:'きゅうりと大根のぬか漬け',m:10,k:'ぬか床',img:'side',
+  g:[['きゅうり','1本'],['大根','5cm'],['ぬか床','適量']],
+  s:['野菜を洗って水けをふく。','ぬか床に埋めて、夏は半日・冬は1日つける。','ぬかを洗い流して切る。'],p:'ぬか床は<b>1日1回かき混ぜる</b>のがいちばん大事。'},
+ {c:'副菜',t:'甘酒にんじんラペ',m:10,k:'甘酒',img:'side',n:1,
+  g:[['にんじん','1本'],['甘酒（米麹）','大さじ2'],['酢','大さじ1']],
+  s:['にんじんを細切りにする。','甘酒と酢を混ぜて和え、15分おく。'],p:'砂糖を使わず、<b>甘酒のやさしい甘さ</b>で。'},
+ {c:'副菜',t:'塩麹のほうれん草ナムル',m:10,k:'塩麹',img:'side',
+  g:[['ほうれん草','1束'],['塩麹','小さじ2'],['ごま油','小さじ1']],
+  s:['ほうれん草をゆでて水けをしぼる。','塩麹とごま油で和える。'],p:'塩の代わりに<b>塩麹ひとつ</b>で味が決まります。'},
+ {c:'おかず',t:'かぼちゃの味噌煮',m:20,k:'味噌',img:'okazu',
+  g:[['かぼちゃ','1/4個'],['味噌','大さじ1.5'],['水','150ml']],
+  s:['かぼちゃを一口大に切る。','水と一緒に煮て、やわらかくなったら味噌を溶く。'],p:'冷蔵で<b>4日</b>もちます。'},
+ {c:'おかず',t:'きのこの塩麹マリネ',m:15,k:'塩麹',img:'okazu',n:1,
+  g:[['しめじ・まいたけ','各1パック'],['塩麹','大さじ1'],['オリーブ油','大さじ1']],
+  s:['きのこをほぐしてオリーブ油で炒める。','火を止めて塩麹で和える。'],p:'パスタやサラダに<b>のせるだけ</b>で一品に。'},
+ {c:'仕込み',t:'はじめての塩麹',m:10,k:'塩麹',img:'hero',
+  g:[['米麹','200g'],['塩','60g'],['水','300ml']],
+  s:['米麹と塩をよく混ぜる。','水を加え、保存びんに入れる。','1日1回混ぜて、常温で1週間。'],p:'とろっとして<b>甘い香り</b>がしたら完成です。'},
+ {c:'仕込み',t:'炊飯器でつくる甘酒',m:15,k:'甘酒',img:'hero',
+  g:[['米麹','200g'],['ご飯','150g'],['水','400ml']],
+  s:['材料を炊飯器に入れて混ぜる。','ふたを開けたまま布巾をかけ、保温で8時間。'],p:'温度は<b>60℃前後</b>をキープ。'},
+ {c:'ライブ',t:'【アーカイブ】手前味噌の仕込み',m:58,k:'味噌',img:'online',
+  g:[['大豆','500g'],['米麹','500g'],['塩','220g']],
+  s:['ライブの録画です。動画を見ながら一緒に仕込みましょう。'],p:'できあがりは<b>半年後</b>。毎月の様子もライブで紹介します。'}
+];
+const CATS=['すべて','主菜','副菜','おかず','仕込み','ライブ'];
+const play='<span class="pl"><svg width="22" height="22" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span>';
+const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
+let cur='すべて';
+CATS.forEach(c=>{const b=document.createElement('button');b.textContent=c;b.setAttribute('aria-pressed',c===cur);b.onclick=()=>{cur=c;[...tabs.children].forEach(x=>x.setAttribute('aria-pressed',x===b));draw();};tabs.appendChild(b);});
+function draw(){grid.innerHTML='';R.filter(r=>cur==='すべて'||r.c===cur).forEach((r,i)=>{const b=document.createElement('button');b.className='rc';b.innerHTML=`<div class="th"><img src="img/${r.img}.jpg" alt="" loading="lazy">${play}<span class="tm">${r.m}分</span>${r.n?'<span class="new">NEW</span>':''}</div><div class="bd"><h4>${r.t}</h4><span class="tg">${r.c}・${r.k}</span></div>`;b.onclick=()=>open(r);grid.appendChild(b);});}
+const md=document.getElementById('md');
+function open(r){document.getElementById('mdI').src='img/'+r.img+'.jpg';document.getElementById('mdT').textContent=r.t;
+ document.getElementById('mdM').innerHTML=`<span>${r.c}</span><span>${r.k}</span><span>${r.m}分</span>`;
+ document.getElementById('mdG').innerHTML=r.g.map(x=>`<li><span>${x[0]}</span><span>${x[1]}</span></li>`).join('');
+ document.getElementById('mdS').innerHTML=r.s.map(x=>`<li>${x}</li>`).join('');
+ document.getElementById('mdP').innerHTML='<b>こずちゃんのひとこと</b><br>'+r.p; md.classList.add('on');}
+document.getElementById('mdX').onclick=()=>md.classList.remove('on');
+md.onclick=e=>{if(e.target===md)md.classList.remove('on')};
+draw();
+</script>
+</body>
+</html>
