@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>会員ページ｜こずちゃんのお料理部屋</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F0892A">
@@ -11,118 +11,207 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="style.css">
 <style>
-body{background:var(--paper)}
-.mhd{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #F5EBDD}
-.mhd .w{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1100px}
-.mhd .me{font-size:12px;color:var(--muted)}
-.mhd .me b{display:block;color:var(--orange-d);font-size:13px}
-.welcome{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--cream);border-radius:0 0 80px 0;padding:26px 30px;max-width:1100px;margin:0 auto}
-.welcome img{width:150px;border-radius:50%;border:4px solid #fff}
-.welcome h1{font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.6}
-.welcome p{font-size:14px}
-@media(max-width:600px){.welcome{grid-template-columns:96px 1fr;padding:18px;border-radius:0 0 50px 0}.welcome img{width:96px}}
-.box{background:#fff;border:2px solid var(--line);border-radius:22px;padding:22px 24px}
-.live{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;margin-top:26px}
-.live .dt{width:84px;height:84px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;text-align:center;line-height:1.2;font-weight:700}
+body{background:var(--paper);padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.w{max-width:1100px}
+.demo{background:var(--ink);color:#fff;text-align:center;font-size:12px;padding:6px 12px;letter-spacing:.06em}
+.demo a{text-decoration:underline}
+.mhd{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #F5EBDD}
+.mhd .w{display:flex;align-items:center;justify-content:space-between;height:58px}
+.me{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);line-height:1.4}
+.me b{display:block;color:var(--ink);font-size:13px}
+.me i{width:36px;height:36px;border-radius:50%;background:var(--orange-soft);display:grid;place-items:center;color:var(--orange-d);font-style:normal;font-weight:700}
+
+/* ようこそ */
+.welcome{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;background:linear-gradient(135deg,var(--cream),var(--orange-soft));border-radius:28px;padding:22px 24px;margin-top:18px;position:relative;overflow:hidden}
+.welcome::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.35)}
+.welcome img{width:120px;border-radius:50%;border:4px solid #fff;position:relative;z-index:1}
+.welcome h1{font-size:clamp(18px,2.4vw,23px);color:var(--ink);line-height:1.55}
+.welcome p{font-size:13.5px}
+.stat{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.stat span{background:#fff;border-radius:999px;padding:2px 12px;font-size:12px;font-weight:700;color:var(--orange-d)}
+@media(max-width:600px){.welcome{grid-template-columns:84px 1fr;padding:18px;gap:14px}.welcome img{width:84px}}
+
+.sh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:34px 0 12px}
+.sh h2{display:flex;align-items:center;gap:10px;font-size:18px;color:var(--ink)}
+.sh h2::before{content:"";width:7px;height:20px;border-radius:4px;background:var(--orange)}
+.sh a,.sh button{font-size:12.5px;font-weight:700;color:var(--orange-d);background:none;border:0;font-family:inherit;cursor:pointer}
+
+/* 横スクロール列 */
+.row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.row>*{flex:0 0 min(78%,300px);scroll-snap-align:start}
+.cont{background:#fff;border:1.5px solid var(--line);border-radius:18px;overflow:hidden;text-align:left;font-family:inherit;padding:0;cursor:pointer}
+.cont .th{position:relative;aspect-ratio:16/9}
+.cont .th img{width:100%;height:100%;object-fit:cover}
+.cont .bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.6)}
+.cont .bar i{display:block;height:100%;background:var(--orange)}
+.cont .bd{padding:10px 14px 12px;font-size:14px;font-weight:700;color:var(--ink)}
+.cont .bd small{display:block;font-size:11.5px;color:var(--muted);font-weight:500}
+
+/* ライブ */
+.live{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:#fff;border:2px solid var(--orange-soft);border-radius:22px;padding:16px 18px;box-shadow:0 14px 30px -24px rgba(150,90,30,.6)}
+.live .dt{width:76px;height:76px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;text-align:center;line-height:1.15;font-weight:700;font-size:12px}
 .live .dt b{font-size:24px;display:block}
-.live h3{font-size:16px;color:var(--ink)}
-.live p{font-size:13px;color:var(--muted)}
+.live h3{font-size:15.5px;color:var(--ink);line-height:1.5}
+.live p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.cd{display:inline-flex;gap:4px;margin-top:4px;font-size:12px;font-weight:700;color:var(--orange-d)}
+.cd span{background:var(--cream);border-radius:8px;padding:0 7px;font-variant-numeric:tabular-nums}
 @media(max-width:600px){.live{grid-template-columns:auto 1fr}.live .btn{grid-column:1/-1}}
-.sh{display:flex;align-items:center;gap:10px;margin:40px 0 14px;font-size:19px;font-weight:700;color:var(--ink)}
-.sh::before{content:"";width:8px;height:22px;border-radius:4px;background:var(--orange)}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
-.tabs button{flex:none;border:2px solid var(--line);background:#fff;color:var(--text);font-family:inherit;font-weight:700;font-size:14px;border-radius:999px;padding:7px 18px;cursor:pointer}
+
+/* 検索・カテゴリ */
+.tools{position:sticky;top:58px;z-index:10;background:var(--paper);padding:10px 0 8px;margin:0 -2px}
+.srch{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:6px 16px}
+.srch input{flex:1;border:0;outline:0;font:inherit;font-size:14px;background:transparent;color:var(--ink);min-width:0}
+.srch:focus-within{border-color:var(--orange)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:2px solid var(--line);background:#fff;color:var(--text);font-family:inherit;font-weight:700;font-size:13px;border-radius:999px;padding:5px 16px;cursor:pointer;transition:all .2s}
 .tabs button[aria-pressed=true]{background:var(--orange);border-color:var(--orange);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:16px}
-.rc{background:#fff;border:2px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;padding:0;transition:transform .15s}
-.rc:hover{transform:translateY(-3px)}
-.rc .th{position:relative;aspect-ratio:4/3}
+
+/* レシピグリッド */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+.rc{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;padding:0;animation:pop .45s cubic-bezier(.2,.7,.2,1) both;transition:transform .2s}
+.rc:active{transform:scale(.97)}
+@media(hover:hover){.rc:hover{transform:translateY(-4px)}}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rc .th{position:relative;aspect-ratio:4/3;overflow:hidden}
 .rc .th img{width:100%;height:100%;object-fit:cover}
-.rc .th .pl{position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
-.rc .th .tm{position:absolute;right:10px;bottom:10px;background:rgba(74,58,44,.8);color:#fff;font-size:11px;border-radius:6px;padding:0 8px}
-.rc .new{position:absolute;left:10px;top:10px;background:var(--green);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:0 10px}
-.rc .bd{padding:12px 16px 16px}
-.rc h4{font-size:15px;color:var(--ink);line-height:1.6}
-.rc .tg{display:inline-block;margin-top:6px;font-size:11px;color:var(--orange-d);background:var(--cream);border-radius:999px;padding:0 10px}
-.deli{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
-.deli img{border-radius:16px;aspect-ratio:4/3;object-fit:cover}
+.pl{position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 6px 16px -6px rgba(0,0,0,.35)}
+.rc .tm{position:absolute;right:8px;bottom:8px;background:rgba(74,58,44,.82);color:#fff;font-size:11px;border-radius:6px;padding:0 7px}
+.rc .new{position:absolute;left:8px;top:8px;background:var(--green);color:#fff;font-size:10.5px;font-weight:700;border-radius:999px;padding:0 9px}
+.rc .done{position:absolute;left:8px;bottom:8px;background:#fff;color:var(--green-d);font-size:10.5px;font-weight:700;border-radius:999px;padding:0 8px}
+.rc .bd{padding:10px 12px 12px}
+.rc h4{font-size:14px;color:var(--ink);line-height:1.55}
+.rc .tg{display:inline-block;margin-top:4px;font-size:10.5px;color:var(--orange-d);background:var(--cream);border-radius:999px;padding:0 9px}
+.fav{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;cursor:pointer;z-index:2}
+.fav svg{transition:transform .25s}
+.fav[aria-pressed=true] svg{fill:#E8577A;stroke:#E8577A;transform:scale(1.12)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:30px 0}
+
+.deli{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px}
+.deli img{border-radius:14px;aspect-ratio:4/3;object-fit:cover}
 @media(max-width:600px){.deli{grid-template-columns:1fr}}
-.mng{text-align:center;margin:50px 0 30px;font-size:12px}
+.mng{text-align:center;margin:40px 0 20px;font-size:12px}
 .mng a{color:var(--muted);text-decoration:underline}
-/* modal */
-.md{position:fixed;inset:0;z-index:50;background:rgba(74,58,44,.5);display:none;align-items:flex-end;justify-content:center}
-.md.on{display:flex}
-.md .sheet{background:var(--paper);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:0 0 30px}
+
+/* 下のタブバー */
+.tbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+.tbar button{border:0;background:none;font-family:inherit;font-size:10.5px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer}
+.tbar button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tbar button[aria-current=true]{color:var(--orange-d)}
+@media(min-width:900px){.tbar{left:50%;right:auto;transform:translateX(-50%);bottom:16px;width:420px;border:1px solid var(--line);border-radius:999px;box-shadow:0 14px 30px -16px rgba(120,70,20,.4)}}
+
+/* 詳細シート */
+.md{position:fixed;inset:0;z-index:50;background:rgba(74,58,44,.5);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.md.on{opacity:1;pointer-events:auto}
+.md .sheet{background:var(--paper);width:100%;max-width:720px;max-height:94vh;overflow:auto;border-radius:26px 26px 0 0;padding:0 0 calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.md.on .sheet{transform:none}
+.md .grab{width:44px;height:5px;border-radius:5px;background:rgba(255,255,255,.8);position:absolute;left:50%;top:8px;transform:translateX(-50%);z-index:2}
 .md .vd{position:relative;aspect-ratio:16/9;background:#2c2018}
-.md .vd img{width:100%;height:100%;object-fit:cover;opacity:.75}
-.md .vd .pl{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
-.md .x{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer;z-index:2}
-.md .in{padding:20px 24px}
-.md h2{font-size:21px;color:var(--ink);line-height:1.5}
-.md .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px}
-.md .meta span{font-size:12px;background:var(--cream);color:var(--orange-d);border-radius:999px;padding:1px 12px;font-weight:700}
-.md h3{font-size:15px;color:var(--orange-d);margin:18px 0 6px}
-.md ul li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0;font-size:14px}
-.md ol{padding-left:0;list-style:none;counter-reset:s;margin:0}
+.md .vd img{width:100%;height:100%;object-fit:cover;opacity:.78}
+.md .vd .pl{width:66px;height:66px}
+.md .vd .note{position:absolute;left:12px;bottom:10px;color:#fff;font-size:11px;background:rgba(0,0,0,.4);border-radius:6px;padding:1px 8px}
+.md .x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;font-size:16px;cursor:pointer;z-index:2}
+.md .in{padding:18px 22px}
+.md h2{font-size:20px;color:var(--ink);line-height:1.5}
+.md .meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 14px}
+.md .meta span{font-size:11.5px;background:var(--cream);color:var(--orange-d);border-radius:999px;padding:1px 11px;font-weight:700}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--cream);border-radius:999px;padding:4px;gap:4px}
+.seg button{border:0;border-radius:999px;background:none;font-family:inherit;font-weight:700;font-size:13.5px;color:var(--muted);padding:7px;cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--orange-d);box-shadow:0 2px 8px -4px rgba(150,90,30,.5)}
+.md ul{margin-top:12px}
+.md ul li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 2px;font-size:14px}
+.md ol{padding-left:0;list-style:none;counter-reset:s;margin:12px 0 0}
 .md ol li{counter-increment:s;display:flex;gap:12px;padding:8px 0;font-size:14px}
 .md ol li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:3px}
 .md .pt{background:#fff;border:2px solid var(--orange-soft);border-radius:16px;padding:12px 16px;font-size:13.5px;margin-top:16px}
 .md .pt b{color:var(--orange-d)}
+.acts{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:18px}
+.acts .btn{padding:12px 18px;font-size:15px}
+.acts .fv2{border:2px solid var(--line);background:#fff;border-radius:999px;width:52px;display:grid;place-items:center;cursor:pointer}
+.acts .fv2[aria-pressed=true] svg{fill:#E8577A;stroke:#E8577A}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:13px;border-radius:999px;padding:8px 18px;opacity:0;transition:all .3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
+<div class="demo">会員ページのイメージです（中身はサンプル）　<a href="index.html">お料理部屋の案内へ戻る</a></div>
+
 <header class="mhd">
   <div class="w">
-    <a class="logo" href="#"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></i><span>お料理部屋<small>会員ページ</small></span></a>
-    <span class="me"><b id="memberName">会員さん</b>Since 2026.10</span>
+    <a class="logo" href="#home"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></i><span>お料理部屋<small>会員ページ</small></span></a>
+    <span class="me"><span><b id="memberName">会員さん</b>2026.10〜</span><i>会</i></span>
   </div>
 </header>
 
-<div class="welcome">
-  <img src="img/kozu.jpg" alt="こずちゃん">
-  <div>
-    <h1>おかえりなさい！<br>今日はなにをつくろう？</h1>
-    <p>今月の新しいレシピは<span class="mk">4品</span>。気になるものから、ひとつどうぞ。</p>
-  </div>
-</div>
+<main class="w" id="home">
 
-<main class="w" style="max-width:1100px">
+  <section class="welcome">
+    <img src="img/kozu.jpg" alt="こずちゃん">
+    <div>
+      <h1>おかえりなさい！<br>今日はなにをつくろう？</h1>
+      <div class="stat"><span id="stNew">今月の新着 0品</span><span id="stDone">つくった 0品</span></div>
+    </div>
+  </section>
 
-  <div class="box live">
+  <div class="sh"><h2>続きから見る</h2></div>
+  <div class="row" id="cont"></div>
+
+  <div class="sh" id="liveSec"><h2>次の会員ライブ</h2></div>
+  <div class="live">
     <span class="dt"><span>10月<b>25</b>土</span></span>
-    <div><h3>会員限定ライブ「はじめての塩麹づくり」</h3><p>10:00〜11:00・Zoom<span class="tbd">〔要確認：日程〕</span><br>材料：米麹200g・塩60g・水300ml</p></div>
+    <div>
+      <h3>はじめての塩麹づくり</h3>
+      <p>10:00〜11:00・Zoom<span class="tbd">〔要確認：日程〕</span><br>材料：米麹200g・塩60g・水300ml</p>
+      <span class="cd" id="cd" aria-live="polite"></span>
+    </div>
     <a class="btn btn--s" href="#">参加URLを開く</a>
   </div>
 
-  <p class="sh">レシピ動画</p>
-  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="sh" id="recipes"><h2>レシピ動画</h2><button type="button" id="clr" hidden>しぼり込みを解除</button></div>
+  <div class="tools">
+    <label class="srch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A27A" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="塩麹、ドレッシング、15分…" aria-label="レシピをさがす"></label>
+    <div class="tabs" id="tabs"></div>
+  </div>
   <div class="grid" id="grid"></div>
 
-  <p class="sh">会員さんへの先行案内</p>
-  <div class="box deli">
-    <img src="img/deli.jpg" alt="真空パックのお惣菜">
+  <div class="sh"><h2>会員さんへの先行案内</h2></div>
+  <div class="deli">
+    <img src="img/deli.jpg" alt="真空パックのお惣菜" loading="lazy">
     <div>
       <p style="font-weight:700;color:var(--ink);font-size:16px">こずちゃんのお惣菜セット<span class="tbd">〔準備中〕</span></p>
-      <p style="font-size:14px">ライブでつくった発酵おかずを、真空パックでお届けします。会員さんには一般販売より先にご案内します。</p>
+      <p style="font-size:14px">ライブでつくったおかずを、真空パックでお届けします。会員さんには一般販売より先にご案内します。</p>
     </div>
   </div>
 
   <p class="mng"><a href="#">解約・お支払いの管理</a></p>
 </main>
 
+<nav class="tbar" aria-label="会員ページのメニュー">
+  <button type="button" data-go="home" aria-current="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>ホーム</button>
+  <button type="button" data-go="recipes"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg>レシピ</button>
+  <button type="button" data-go="liveSec"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/></svg>ライブ</button>
+  <button type="button" data-go="fav"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>お気に入り</button>
+</nav>
+
 <div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mdT">
   <div class="sheet">
-    <div class="vd"><button class="x" id="mdX" aria-label="閉じる">✕</button><img id="mdI" alt=""><span class="pl"><svg width="28" height="28" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span></div>
+    <div class="vd"><span class="grab"></span><button class="x" id="mdX" aria-label="閉じる">✕</button><img id="mdI" alt=""><span class="pl"><svg width="26" height="26" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span><span class="note">動画はここで再生されます</span></div>
     <div class="in">
       <h2 id="mdT"></h2>
       <div class="meta" id="mdM"></div>
-      <h3>材料（2〜3人分）</h3><ul id="mdG"></ul>
-      <h3>作り方</h3><ol id="mdS"></ol>
+      <div class="seg" role="group" aria-label="表示切りかえ"><button type="button" id="sgG" aria-pressed="true">材料</button><button type="button" id="sgS" aria-pressed="false">作り方</button></div>
+      <ul id="mdG"></ul>
+      <ol id="mdS" hidden></ol>
       <div class="pt" id="mdP"></div>
+      <div class="acts"><button type="button" class="btn" id="mdDone">つくった！</button><button type="button" class="fv2" id="mdFav" aria-pressed="false" aria-label="お気に入り"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A27A" stroke-width="2"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></button></div>
     </div>
   </div>
 </div>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
 // レシピデータ（あとで管理画面・Firestore から読み込む形に差し替え）
@@ -171,21 +260,67 @@ const R=[
   g:[['大豆','500g'],['米麹','500g'],['塩','220g']],
   s:['ライブの録画です。動画を見ながら一緒に仕込みましょう。'],p:'できあがりは<b>半年後</b>。毎月の様子もライブで紹介します。'}
 ];
+R.forEach((r,i)=>r.id=i);
 const CATS=['すべて','主菜','副菜','おかず','無添加','仕込み','ライブ'];
-const play='<span class="pl"><svg width="22" height="22" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span>';
-const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
-let cur='すべて';
-CATS.forEach(c=>{const b=document.createElement('button');b.textContent=c;b.setAttribute('aria-pressed',c===cur);b.onclick=()=>{cur=c;[...tabs.children].forEach(x=>x.setAttribute('aria-pressed',x===b));draw();};tabs.appendChild(b);});
-function draw(){grid.innerHTML='';R.filter(r=>cur==='すべて'||r.c===cur).forEach((r,i)=>{const b=document.createElement('button');b.className='rc';b.innerHTML=`<div class="th"><img src="img/${r.img}.jpg" alt="" loading="lazy">${play}<span class="tm">${r.m}分</span>${r.n?'<span class="new">NEW</span>':''}</div><div class="bd"><h4>${r.t}</h4><span class="tg">${r.c}・${r.k}</span></div>`;b.onclick=()=>open(r);grid.appendChild(b);});}
-const md=document.getElementById('md');
-function open(r){document.getElementById('mdI').src='img/'+r.img+'.jpg';document.getElementById('mdT').textContent=r.t;
- document.getElementById('mdM').innerHTML=`<span>${r.c}</span><span>${r.k}</span><span>${r.m}分</span>`;
- document.getElementById('mdG').innerHTML=r.g.map(x=>`<li><span>${x[0]}</span><span>${x[1]}</span></li>`).join('');
- document.getElementById('mdS').innerHTML=r.s.map(x=>`<li>${x}</li>`).join('');
- document.getElementById('mdP').innerHTML='<b>こずちゃんのひとこと</b><br>'+r.p; md.classList.add('on');}
-document.getElementById('mdX').onclick=()=>md.classList.remove('on');
-md.onclick=e=>{if(e.target===md)md.classList.remove('on')};
-draw();
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let fav=new Set(store.get('kr_fav',[])), done=new Set(store.get('kr_done',[])), cur='すべて', favOnly=false;
+const heart='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A27A" stroke-width="2"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg>';
+const play='<span class="pl"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F0892A"><path d="M8 5v14l11-7z"/></svg></span>';
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1800)}
+function stats(){$('stNew').textContent='今月の新着 '+R.filter(r=>r.n).length+'品';$('stDone').textContent='つくった '+done.size+'品'}
+
+// 続きから見る（サンプル）
+[[0,.62],[4,.3],[11,.15]].filter(([i])=>R[i]).forEach(([i,p])=>{const r=R[i];const b=document.createElement('button');b.className='cont';b.type='button';
+ b.innerHTML=`<div class="th"><img src="img/${r.img}.jpg" alt="" loading="lazy">${play}<span class="bar"><i style="width:${p*100}%"></i></span></div><div class="bd"><small>${r.c}・残り${Math.max(1,Math.round(r.m*(1-p)))}分</small>${r.t}</div>`;
+ b.onclick=()=>open(r);$('cont').appendChild(b);});
+
+// カテゴリ
+CATS.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cur);b.onclick=()=>{cur=c;favOnly=false;setNav('recipes');[...$('tabs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));draw();};$('tabs').appendChild(b);});
+$('q').addEventListener('input',draw);
+$('clr').onclick=()=>{favOnly=false;$('q').value='';cur='すべて';[...$('tabs').children].forEach((x,i)=>x.setAttribute('aria-pressed',i===0));draw()};
+
+function draw(){
+ const q=$('q').value.trim();
+ const list=R.filter(r=>(cur==='すべて'||r.c===cur)&&(!favOnly||fav.has(r.id))&&(!q||(r.t+r.k+r.c+r.m+'分'+r.g.map(x=>x[0]).join('')).includes(q)));
+ $('clr').hidden=!(favOnly||q||cur!=='すべて');
+ const g=$('grid');g.innerHTML='';
+ if(!list.length){g.innerHTML=`<p class="empty">${favOnly?'お気に入りはまだありません。<br>レシピの ♡ を押すとここに並びます。':'見つかりませんでした。ほかの言葉でさがしてみてください。'}</p>`;return}
+ list.forEach((r,i)=>{const d=document.createElement('div');d.className='rc';d.style.animationDelay=Math.min(i,8)*.04+'s';d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label',r.t);
+  d.innerHTML=`<div class="th"><img src="img/${r.img}.jpg" alt="" loading="lazy">${play}<span class="tm">${r.m}分</span>${r.n?'<span class="new">NEW</span>':''}${done.has(r.id)?'<span class="done">✓ つくった</span>':''}</div><button type="button" class="fav" aria-pressed="${fav.has(r.id)}" aria-label="お気に入り">${heart}</button><div class="bd"><h4>${r.t}</h4><span class="tg">${r.c}・${r.k}</span></div>`;
+  d.querySelector('.fav').onclick=e=>{e.stopPropagation();toggleFav(r.id);e.currentTarget.setAttribute('aria-pressed',fav.has(r.id))};
+  d.onclick=()=>open(r);d.onkeydown=e=>{if(e.key==='Enter')open(r)};g.appendChild(d);});
+}
+function toggleFav(id){fav.has(id)?fav.delete(id):fav.add(id);store.set('kr_fav',[...fav]);toast(fav.has(id)?'お気に入りに入れました':'お気に入りから外しました');if(favOnly)draw()}
+
+// 詳細シート
+const md=$('md');let openR=null;
+function seg(s){$('sgG').setAttribute('aria-pressed',!s);$('sgS').setAttribute('aria-pressed',s);$('mdG').hidden=s;$('mdS').hidden=!s}
+function open(r){openR=r;$('mdI').src='img/'+r.img+'.jpg';$('mdT').textContent=r.t;
+ $('mdM').innerHTML=`<span>${r.c}</span><span>${r.k}</span><span>${r.m}分</span>`;
+ $('mdG').innerHTML=r.g.map(x=>`<li><span>${x[0]}</span><span>${x[1]}</span></li>`).join('');
+ $('mdS').innerHTML=r.s.map(x=>`<li>${x}</li>`).join('');
+ $('mdP').innerHTML='<b>こずちゃんのひとこと</b><br>'+r.p;seg(false);
+ $('mdFav').setAttribute('aria-pressed',fav.has(r.id));$('mdDone').textContent=done.has(r.id)?'✓ つくった':'つくった！';
+ md.classList.add('on');document.body.style.overflow='hidden';}
+function close(){md.classList.remove('on');document.body.style.overflow='';draw()}
+$('sgG').onclick=()=>seg(false);$('sgS').onclick=()=>seg(true);
+$('mdX').onclick=close;md.onclick=e=>{if(e.target===md)close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+$('mdFav').onclick=e=>{toggleFav(openR.id);e.currentTarget.setAttribute('aria-pressed',fav.has(openR.id))};
+$('mdDone').onclick=e=>{done.has(openR.id)?done.delete(openR.id):done.add(openR.id);store.set('kr_done',[...done]);e.currentTarget.textContent=done.has(openR.id)?'✓ つくった':'つくった！';stats();if(done.has(openR.id))toast('おつかれさまでした！')};
+
+// 下のタブ
+function setNav(k){document.querySelectorAll('.tbar button').forEach(b=>b.setAttribute('aria-current',b.dataset.go===k))}
+document.querySelectorAll('.tbar button').forEach(b=>b.onclick=()=>{const k=b.dataset.go;setNav(k);
+ if(k==='fav'){favOnly=true;draw();document.getElementById('recipes').scrollIntoView({behavior:'smooth'});return}
+ if(k==='recipes'){favOnly=false;draw()}
+ document.getElementById(k).scrollIntoView({behavior:'smooth',block:'start'});});
+
+// ライブまでのカウントダウン（サンプル日時）
+const LIVE=new Date('2026-10-25T10:00:00+09:00');
+function tick(){const s=Math.max(0,(LIVE-Date.now())/1000|0);const d=s/86400|0,h=s%86400/3600|0,m=s%3600/60|0;$('cd').innerHTML=s?`あと <span>${d}日</span><span>${h}時間</span><span>${m}分</span>`:'ただいま開催中';}
+tick();setInterval(tick,30000);
+stats();draw();
 </script>
 </body>
 </html>

@@ -12,6 +12,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="ui.css">
+<style>
+.mshow{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:center;max-width:860px;margin:34px auto 0}
+.mphone{border:10px solid #3a2e24;border-radius:40px;overflow:hidden;aspect-ratio:390/780;box-shadow:0 30px 50px -30px rgba(120,70,20,.6);background:#fff}
+.mphone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.mlist{display:grid;gap:14px}
+.mlist li{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;background:var(--cream);border-radius:18px;padding:14px 18px}
+.mlist b{display:grid;place-items:center;background:var(--orange);color:#fff;border-radius:999px;font-size:13px;padding:4px 0}
+.mlist span{font-size:14px;line-height:1.8}
+@media(max-width:760px){.mshow{grid-template-columns:1fr;gap:26px}.mphone{width:min(250px,70vw);margin:0 auto}.mlist li{grid-template-columns:84px 1fr;padding:12px 14px}}
+</style>
 </head>
 <body>
 
@@ -108,6 +118,22 @@
   </div>
 </section>
 
+<section class="sec" id="member" style="background:#fff">
+  <div class="w">
+    <h2 class="h2"><span class="h2-sm">MEMBER PAGE</span>会員ページは<span class="or">こんな画面</span></h2>
+    <div class="mshow">
+      <div class="mphone"><img src="img/member-shot.jpg" alt="会員ページの画面：続きから見る・次のライブ・レシピ動画" loading="lazy"></div>
+      <ul class="mlist">
+        <li><b>見放題</b><span>主菜・副菜・おかず・無添加・仕込みのレシピ動画を、カテゴリやキーワードでさがせます</span></li>
+        <li><b>続きから</b><span>途中まで見た動画は、続きからすぐ再生できます</span></li>
+        <li><b>お気に入り</b><span>♡を押したレシピを、あとからまとめて見返せます</span></li>
+        <li><b>ライブ</b><span>次の会員ライブの日時と、参加URLがいつでも分かります</span></li>
+      </ul>
+    </div>
+    <div class="cta-wrap" style="margin-top:28px"><a class="btn" href="member.html">会員ページを見てみる</a></div>
+  </div>
+</section>
+
 <section class="cta-band" id="join">
   <div class="w">
     <div class="cta-box">
@@ -194,7 +220,7 @@
 </section>
 
 <footer class="ft">
-  <nav><a href="#">特定商取引法に基づく表記<span class="tbd">〔要確認〕</span></a><a href="#">プライバシーポリシー</a></nav>
+  <nav><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
   <p>© 心プラス</p>
 </footer>
 
