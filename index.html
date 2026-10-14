@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="sub.css">
 <style>
-.menu3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.menu3{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+@media(max-width:1100px){.menu3{grid-template-columns:repeat(2,1fr)}}
 .mc{background:#fff;border:2px solid var(--line);border-radius:24px;padding:0 0 24px;overflow:hidden;text-align:center}
 .mc .ph{aspect-ratio:4/3;overflow:hidden;border-radius:0 0 50% 50%/0 0 22% 22%}
 .mc .ph img{width:100%;height:100%;object-fit:cover}
@@ -49,7 +50,8 @@
       <a href="#about">心プラスとは</a>
       <a href="#menu">メニュー</a>
       <a href="#room">お料理部屋</a>
-      <a href="#kozu">こずちゃん</a>
+      <a href="#dog">わんちゃんおやつ</a>
+      <a href="#kozu">講師紹介</a>
       <a href="#faq">よくある質問</a>
       <a class="btn btn--s" href="#reserve">LINEで予約</a>
     </nav>
@@ -60,7 +62,7 @@
   <div class="hero-grid">
     <div class="hero-ph"><img src="img/hero.jpg" alt="味噌・麹・ぬか漬け・甘酒をのせたお盆" fetchpriority="high"></div>
     <div class="hero-tx">
-      <p class="ey">発酵食レッスン・耳つぼ・託児サービス</p>
+      <p class="ey">発酵食レッスン・耳つぼ・託児サービス・わんちゃんのおやつ</p>
       <h1>からだに<span>プラス</span>、<br>こころに<span>プラス</span>。</h1>
       <p class="sub">発酵食レッスン、耳つぼ、託児サービス。<br>3つのサービスを、それぞれ単独でご利用いただけます。</p>
       <div class="cta-wrap" style="text-align:inherit">
@@ -72,7 +74,8 @@
 </section>
 
 <section class="sec" id="about">
-  <div class="w">
+  <div class="w deco-wrap">
+    <img class="deco-dog deco-dog--r" src="img/dog-poodle.png" alt="" loading="lazy" aria-hidden="true">
     <h2 class="h2 ttl"><span><span class="or">心プラス</span>とは？</span></h2>
     <p class="lead">「心プラス」には、<span class="mk">誰かのプラスになれる存在でありたい</span>という思いを込めています。<br>発酵食レッスン・耳つぼ・託児サービスは、<span class="mk">それぞれ独立したサービス</span>です。<br>必要なものだけ、ひとつからお選びください。</p>
     <div class="flow">
@@ -113,6 +116,14 @@
           <p class="pr">¥2,000<small>／120分</small></p>
           <a class="more" href="takuji.html">託児を詳しく</a>
         </div>
+        <div class="mc">
+          <div class="ph ph--ill"><img src="img/dog-both.png" alt="フレンチブルドッグとトイプードルのイラスト" loading="lazy"></div>
+          <span class="nb">04</span>
+          <p class="sub">わんちゃんのおやつ</p><h3>グルテンフリー<br>無添加おやつ</h3>
+          <p>小麦を使わず、<span class="mk">添加物を入れない</span>わんちゃん用のおやつを販売しています。</p>
+          <p class="pr" style="font-size:15px">価格はLINEでご案内<span class="tbd">〔要確認〕</span></p>
+          <a class="more" href="#dog">おやつを詳しく</a>
+        </div>
       </div>
       <p class="lead" style="font-size:13px;color:var(--muted)">表示はすべて税込です。<span class="tbd">〔料金は仮・要確認〕</span></p>
     </div>
@@ -147,10 +158,32 @@
   </div>
 </section>
 
+<section class="sec" id="dog">
+  <div class="w">
+    <h2 class="h2 ttl"><span>わんちゃんの<span class="or">おやつ</span></span></h2>
+    <div class="dog-box">
+      <div class="dog-ill"><img src="img/dog-both.png" alt="フレンチブルドッグとトイプードルのイラスト" loading="lazy"></div>
+      <div class="dog-tx">
+        <span class="ribbon" style="margin:0 0 12px">グルテンフリー・無添加</span>
+        <h3>うちの子にも、<br>やさしいおやつを。</h3>
+        <p>人のごはんと同じように、わんちゃんのおやつも素材にこだわりました。</p>
+        <ul class="dog-pt">
+          <li><b>グルテンフリー</b>小麦を使っていません</li>
+          <li><b>無添加</b>保存料・着色料を入れていません</li>
+          <li><b>手づくり</b>少しずつ、ていねいにつくっています</li>
+        </ul>
+        <p class="dog-note">種類・価格・お届け方法は、LINEでご案内します。<span class="tbd">〔要確認：商品ラインナップ・価格・販売方法〕</span></p>
+        <a class="btn" href="https://line.me/R/ti/p/%40kix8116s" target="_blank" rel="noopener">LINEでおやつを問い合わせる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="background:#fff">
   <div class="arch arch--l">
     <div class="w">
-      <h2 class="h2" id="kozu"><span class="h2-sm">PROFILE</span>こずちゃんのこと</h2>
+      <h2 class="h2" id="kozu"><span class="h2-sm">PROFILE</span>講師紹介</h2>
+      <p class="lead">心プラスの教室は、<span class="mk">こずちゃんとよかちゃんのふたり</span>でお迎えします。</p>
       <div class="teacher">
         <img src="img/kozu.jpg" alt="こずちゃんのイラスト" loading="lazy">
         <div>
@@ -159,6 +192,15 @@
           <p>発酵食は、むずかしいものではありません。毎日のごはんにひと品足すだけでいい。<span class="mk">ここに来たらひと息つける</span>。そんな場所でありたいと思っています。</p>
         </div>
       </div>
+      <div class="teacher teacher--r">
+        <img src="img/yoka.jpg" alt="よかちゃんのイラスト" loading="lazy">
+        <div>
+          <p class="nm"><small>心プラス 講師</small>よかちゃん</p>
+          <p>こずちゃんと一緒に、発酵食の教室を担当しています。<span class="tbd">〔要確認：肩書き・プロフィール〕</span></p>
+          <p>はじめての方にも、<span class="mk">気軽に聞いてもらえる雰囲気</span>を大切にしています。</p>
+        </div>
+      </div>
+      <img class="deco-dog deco-dog--l" src="img/dog-frenchie.png" alt="" loading="lazy" aria-hidden="true">
 
       <h2 class="h2" style="margin-top:70px" id="reserve-flow"><span class="h2-sm">FLOW</span>ご予約の流れ</h2>
       <p class="lead">LINEから、3分ほどで予約できます。実際の予約画面はこんな感じです。</p>
@@ -180,6 +222,7 @@
       <details><summary><span class="q">Q</span>ひとつのサービスだけ利用できますか？</summary><div class="a"><i>A</i><p><b>できます。</b>発酵食レッスン・耳つぼ・託児サービスは、それぞれ独立したサービスです。ひとつだけのご予約で大丈夫です。</p></div></details>
       <details><summary><span class="q">Q</span>託児の対象年齢は？</summary><div class="a"><i>A</i><p>対象年齢や人数は、LINEでご相談ください。<span class="tbd">〔要確認〕</span></p></div></details>
             <details><summary><span class="q">Q</span>場所はどこですか？</summary><div class="a"><i>A</i><p>石川県内で行っています。詳しい場所はご予約時にお伝えします。<span class="tbd">〔要確認：住所〕</span></p></div></details>
+      <details><summary><span class="q">Q</span>わんちゃんのおやつだけ買えますか？</summary><div class="a"><i>A</i><p><b>買えます。</b>レッスンのご予約がなくても大丈夫です。LINEでお問い合わせください。</p></div></details>
       <details><summary><span class="q">Q</span>キャンセルはできますか？</summary><div class="a"><i>A</i><p>前日までにLINEでご連絡ください。<span class="tbd">〔要確認：キャンセル規定〕</span></p></div></details>
     </div>
   </div>
@@ -189,6 +232,7 @@
   <div class="w">
     <div class="cta-box">
       <span class="badge"><span>予約は<b>LINE</b></span></span>
+      <img class="cta-dogs" src="img/dog-both.png" alt="" loading="lazy" aria-hidden="true">
       <h3><span class="s">からだにプラス、こころにプラス。</span>心プラスでお待ちしています</h3>
       <p style="font-size:14px;margin:14px 0 22px">ご予約・ご相談は、公式LINEからお気軽にどうぞ。</p>
       <a class="btn" href="https://line.me/R/ti/p/%40kix8116s" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.73 2 10.32c0 4.1 3.55 7.54 8.35 8.2.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.7-3.36 7.78-5.75C21.1 13.9 22 12.2 22 10.32 22 5.73 17.52 2 12 2z"/></svg>LINEで予約する</a>
