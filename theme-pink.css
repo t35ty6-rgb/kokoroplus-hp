@@ -1,0 +1,12 @@
+/* ===== 配色テーマ（2026-10-27） =====
+   今はピンク。中身を空にすると、元のオレンジに戻ります（「ホームページをオレンジに戻す」で自動）。 */
+:root{
+  --cream:#FFF2F5; --cream-2:#FCE4EA; --paper:#FFFAFB;
+  --orange:#E48AA0; --orange-d:#C7637D; --orange-soft:#FBDDE5;
+  --ink:#4B3A40; --text:#5F4B52; --muted:#8F7A81; --line:#F3D5DE;
+  --mark:linear-gradient(transparent 58%, #FFD3DF 58%);
+}
+.hd{border-bottom-color:#F7E3E9!important}
+.pgbar{background:linear-gradient(90deg,#E48AA0,#F7C3D1)!important}
+.js .mk{background-image:linear-gradient(transparent 58%,#FFD3DF 58%)!important}
+.cta-band{background-image:linear-gradient(180deg,#FFF6F8,#FDE6EC)!important}
