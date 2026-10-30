@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>COCORO＋（心プラス・こころプラス）｜発酵食レッスン・耳つぼ・託児｜石川</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="description" content="石川の心プラス。こずちゃんの発酵食レッスン、耳つぼ、託児サービス。オンラインの月額お料理部屋もあります。ご予約はLINEから。">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F0892A">
@@ -13,7 +15,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="sub.css">
 <style>
-.menu3{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.menu3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
 @media(max-width:1100px){.menu3{grid-template-columns:repeat(2,1fr)}}
 .mc{background:#fff;border:2px solid var(--line);border-radius:24px;padding:0 0 24px;overflow:hidden;text-align:center}
 .mc .ph{aspect-ratio:4/3;overflow:hidden;border-radius:0 0 50% 50%/0 0 22% 22%}
@@ -38,6 +40,12 @@
 .s4 h4{font-size:15px;color:var(--ink);margin:8px 0 4px}
 .s4 p{font-size:13px;color:var(--muted);line-height:1.8}
 @media(max-width:760px){.steps4{grid-template-columns:1fr 1fr}}
+.okz{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:28px auto 0}
+.okz-c{background:#fff;border:2px solid var(--line);border-radius:22px;padding:24px 20px;text-align:center}
+.okz-i{display:inline-flex;width:56px;height:56px;border-radius:50%;background:var(--orange-soft);align-items:center;justify-content:center;font-size:26px}
+.okz-c h3{font-size:18px;color:var(--ink);margin:12px 0 8px;line-height:1.5}.okz-c p{font-size:14px;margin:0}
+.okz-pt{max-width:620px;margin:22px auto}
+@media(max-width:760px){.okz{grid-template-columns:1fr}.menu3{grid-template-columns:1fr 1fr}}
 </style>
 <link rel="stylesheet" href="ui.css">
 <link rel="stylesheet" href="theme.css">
@@ -46,10 +54,11 @@
 
 <header class="hd">
   <div class="w">
-    <a class="logo" href="#top"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></i><span>COCORO＋<small>こころプラス</small></span></a>
+    <a class="logo" href="#top"><img src="img/logo.png" alt="COCORO＋ こころプラス" width="435" height="116"></a>
     <nav class="nav">
       <a href="#about">心プラスとは</a>
       <a href="#menu">メニュー</a>
+      <a href="#okazu">真空パックごはん</a>
       <a href="#room">お料理部屋</a>
       <a href="#dog">わんちゃんおやつ</a>
       <a href="#kozu">講師紹介</a>
@@ -63,9 +72,9 @@
   <div class="hero-grid">
     <div class="hero-ph"><img src="img/hero.jpg" alt="味噌・麹・ぬか漬け・甘酒をのせたお盆" fetchpriority="high"></div>
     <div class="hero-tx">
-      <p class="ey">発酵食レッスン・耳つぼ・託児サービス・わんちゃんのおやつ</p>
+      <p class="ey">発酵食レッスン・真空パックのおうちごはん・耳つぼ・託児・わんちゃんのおやつ</p>
       <h1>からだに<span>プラス</span>、<br>こころに<span>プラス</span>。</h1>
-      <p class="sub">発酵食レッスンを中心に、耳つぼ・託児サービスも。<br>それぞれ単独でご利用いただけます。</p>
+      <p class="sub">無添加・発酵食の家庭の味を、レッスンと真空パックでお届けします。<br>耳つぼ・託児サービスも、それぞれ単独でご利用いただけます。</p>
       <div class="cta-wrap" style="text-align:inherit">
         <span class="bubble">ご予約・ご相談はLINEから</span><br>
         <a class="btn" href="#reserve"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.73 2 10.32c0 4.1 3.55 7.54 8.35 8.2.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.7-3.36 7.78-5.75C21.1 13.9 22 12.2 22 10.32 22 5.73 17.52 2 12 2z"/></svg>LINEで予約する</a>
@@ -102,8 +111,16 @@
           <p class="pr">¥4,000<small>／120分</small></p>
         </div>
         <div class="mc">
-          <div class="ph"><img src="img/mimitsubo.jpg" alt="耳つぼシードを貼る様子" loading="lazy"></div>
+          <div class="ph"><img src="img/deli.jpg" alt="真空パックの発酵食おかず" loading="lazy"></div>
           <span class="nb">02</span>
+          <p class="sub">無添加・発酵食</p><span class="wait" style="background:var(--orange);color:#fff;opacity:1">年内スタート</span><h3>真空パックの<br>おうちごはん</h3>
+          <p>発酵調味料でつくった無添加のおかずを、真空パックでお届けします。<span class="mk">離れて暮らすご家族</span>にも、わが家の味を。</p>
+          <p class="pr" style="font-size:15px">LINEで先行案内</p>
+          <a class="more" href="#okazu">くわしくみる</a>
+        </div>
+        <div class="mc">
+          <div class="ph"><img src="img/mimitsubo.jpg" alt="耳つぼシードを貼る様子" loading="lazy"></div>
+          <span class="nb">03</span>
           <p class="sub">リラックスの時間</p><span class="wait">キャンセル待ち</span><h3>耳つぼ</h3>
           <p>耳に小さなシードを貼る、<span class="mk">ほっとひと息つける</span>ケアの時間です。お話をしながら、ゆっくりお過ごしください。</p>
           <p class="pr">¥3,300<small>／40分</small></p>
@@ -112,23 +129,23 @@
         </div>
         <div class="mc">
           <div class="ph"><img src="img/takuji.jpg" alt="木のおもちゃで遊ぶ子ども" loading="lazy"></div>
-          <span class="nb">03</span>
+          <span class="nb">04</span>
           <p class="sub">お子さまをお預かり</p><span class="wait">キャンセル待ち</span><h3>託児サービス</h3>
-          <p>お仕事やお出かけのあいだ、<span class="mk">お子さまをお預かり</span>します。対象年齢はご相談ください。<span class="tbd">〔要確認〕</span></p>
+          <p>お仕事やお出かけのあいだ、<span class="mk">お子さまをお預かり</span>します。対象年齢はご相談ください。</p>
           <p class="pr">¥2,000<small>／120分</small></p>
           <p class="wait-note">ただいま満席です。LINEでキャンセル待ちを受け付けています。</p>
           <a class="more" href="takuji.html">託児を詳しく</a>
         </div>
         <div class="mc">
           <div class="ph ph--ill"><img src="img/dog-both.png" alt="フレンチブルドッグとトイプードルのイラスト" loading="lazy"></div>
-          <span class="nb">04</span>
-          <p class="sub">わんちゃんのおやつ</p><h3>グルテンフリー<br>無添加おやつ</h3>
+          <span class="nb">05</span>
+          <p class="sub">わんちゃんのおやつ</p><h3>無添加<br>グルテンフリーおやつ</h3>
           <p>小麦を使わず、<span class="mk">添加物を入れない</span>わんちゃん用のおやつを、お料理部屋の会員さま向けに販売します。</p>
           <p class="pr" style="font-size:15px">お料理部屋の会員さま向け</p>
           <a class="more" href="#dog">おやつを詳しく</a>
         </div>
       </div>
-      <p class="lead" style="font-size:13px;color:var(--muted)">表示はすべて税込です。<span class="tbd">〔料金は仮・要確認〕</span></p>
+      <p class="lead" style="font-size:13px;color:var(--muted)">表示はすべて税込です。</p>
     </div>
   </div>
 </section>
@@ -142,7 +159,9 @@
         <h3>こずちゃんの<br>お料理部屋</h3>
         <ul>
           <li>発酵食と無添加調味料のレシピ動画が見放題</li>
-          <li>会員限定のオンラインライブ</li>
+          <li>月1回のオンラインレッスン（日時は事前にお知らせ・一緒に夕飯をつくります・習いたいレシピのリクエストもOK）</li>
+          <li>お惣菜などが<b>10%オフ</b></li>
+          <li>こずちゃんのおすすめ商品をご紹介</li>
           <li>月額 ¥2,980・いつでも解約OK</li>
         </ul>
         <div style="margin-top:20px"><a class="btn" href="kokoro-lp/">お料理部屋をみる</a></div>
@@ -162,13 +181,22 @@
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="okazu">
   <div class="w">
-    <span class="ribbon">準備中</span>
-    <div class="box" style="display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:center;max-width:820px;margin:20px auto 0;background:#fff;border:2px solid var(--line);border-radius:24px;padding:22px">
-      <img src="img/deli.jpg" alt="真空パックのお惣菜" loading="lazy" style="border-radius:16px">
-      <div><p style="font-weight:700;color:var(--ink);font-size:18px">こずちゃんのお惣菜</p><p style="font-size:14px">発酵調味料でつくったお惣菜を、真空パックでお届けする準備をしています。つくる場所を整えて、年内のスタートを目指しています。</p></div>
+    <h2 class="h2 ttl"><span>真空パックの<span class="or">おうちごはん</span></span></h2>
+    <p class="lead"><b style="display:block;font-size:21px;color:var(--ink);margin-bottom:6px">離れていても、わが家の味を。</b>無添加・発酵食でつくった家庭のごはんを、真空パックでお届けします。<br>温めるだけで、手づくりの一品がそろいます。</p>
+    <div class="okz">
+      <div class="okz-c"><span class="okz-i">🍳</span><h3>働くママの<br>夕飯づくりに</h3><p>帰ってから一からつくらなくても大丈夫。あと一品を、安心のおかずで。</p></div>
+      <div class="okz-c"><span class="okz-i">🎒</span><h3>離れて暮らす<br>子どもたちへ</h3><p>ひとり暮らしの子に、実家の味を。忙しくても、ちゃんと食べてほしいから。</p></div>
+      <div class="okz-c"><span class="okz-i">🏠</span><h3>単身赴任の<br>大切な人へ</h3><p>外食やコンビニが続く毎日に、からだにやさしい家庭のごはんを届けます。</p></div>
     </div>
+    <ul class="dog-pt okz-pt">
+      <li><b>無添加</b>保存料・化学調味料を使いません</li>
+      <li><b>発酵食</b>塩麹・味噌・甘酒など、発酵調味料で味つけ</li>
+      <li><b>真空パック</b>冷蔵・冷凍で届いて、温めるだけ</li>
+    </ul>
+    <p class="lead" style="font-size:14px">ただいま準備中です（年内スタート予定）。<b>お料理部屋の会員さまは10%オフ</b>。公式LINEで先行してご案内します。</p>
+    <div style="text-align:center;margin-top:14px"><a class="btn" href="#reserve">LINEで先行案内を受けとる</a></div>
   </div>
 </section>
 
@@ -178,7 +206,7 @@
     <div class="dog-box">
       <div class="dog-ill"><img src="img/dog-both.png" alt="フレンチブルドッグとトイプードルのイラスト" loading="lazy"></div>
       <div class="dog-tx">
-        <span class="ribbon" style="margin:0 0 12px">グルテンフリー・無添加</span>
+        <span class="ribbon" style="margin:0 0 12px">無添加・グルテンフリー</span>
         <h3>うちの子にも、<br>やさしいおやつを。</h3>
         <p>人のごはんと同じように、わんちゃんのおやつも素材にこだわりました。</p>
         <ul class="dog-pt">
@@ -186,7 +214,7 @@
           <li><b>無添加</b>保存料・着色料を入れていません</li>
           <li><b>手づくり</b>少しずつ、ていねいにつくっています</li>
         </ul>
-        <p class="dog-note">お料理部屋（月額 ¥2,980）の会員さま向けの販売です。種類と価格は準備ができしだいご案内します。<span class="tbd">〔要確認：商品・価格〕</span></p>
+        <p class="dog-note">お料理部屋（月額 ¥2,980）の会員さま向けの販売です。種類と価格は準備ができしだいご案内します。</p>
         <a class="btn" href="kokoro-lp/">お料理部屋をみる</a>
       </div>
     </div>
@@ -210,7 +238,7 @@
         <img src="img/yuka.jpg" alt="ゆかちゃんのイラスト" loading="lazy">
         <div>
           <p class="nm"><small>心プラス 講師</small>ゆかちゃん</p>
-          <p>こずちゃんと一緒に、発酵食の教室を担当しています。<span class="tbd">〔要確認：肩書き・プロフィール〕</span></p>
+          <p>こずちゃんと一緒に、発酵食の教室を担当しています。</p>
           <p>はじめての方にも、<span class="mk">気軽に聞いてもらえる雰囲気</span>を大切にしています。</p>
         </div>
       </div>
@@ -234,10 +262,10 @@
     <div class="faq">
       <details open><summary><span class="q">Q</span>料理が苦手でも参加できますか？</summary><div class="a"><i>A</i><p><b>大丈夫です。</b>包丁と鍋があればつくれるところから、ゆっくり進めます。</p></div></details>
       <details><summary><span class="q">Q</span>ひとつのサービスだけ利用できますか？</summary><div class="a"><i>A</i><p><b>できます。</b>発酵食レッスン・耳つぼ・託児サービスは、それぞれ独立したサービスです。ひとつだけのご予約で大丈夫です。</p></div></details>
-      <details><summary><span class="q">Q</span>託児の対象年齢は？</summary><div class="a"><i>A</i><p>対象年齢や人数は、LINEでご相談ください。<span class="tbd">〔要確認〕</span></p></div></details>
-            <details><summary><span class="q">Q</span>場所はどこですか？</summary><div class="a"><i>A</i><p>石川県内で行っています。詳しい場所はご予約時にお伝えします。<span class="tbd">〔要確認：住所〕</span></p></div></details>
+      <details><summary><span class="q">Q</span>託児の対象年齢は？</summary><div class="a"><i>A</i><p>対象年齢や人数は、LINEでご相談ください。</p></div></details>
+            <details><summary><span class="q">Q</span>場所はどこですか？</summary><div class="a"><i>A</i><p>石川県内で行っています。詳しい場所はご予約時にお伝えします。</p></div></details>
       <details><summary><span class="q">Q</span>わんちゃんのおやつは誰でも買えますか？</summary><div class="a"><i>A</i><p>わんちゃんのおやつは、<b>お料理部屋の会員さま向け</b>に販売します。会員ページからご購入いただけます。</p></div></details>
-      <details><summary><span class="q">Q</span>キャンセルはできますか？</summary><div class="a"><i>A</i><p>前日までにLINEでご連絡ください。<span class="tbd">〔要確認：キャンセル規定〕</span></p></div></details>
+      <details><summary><span class="q">Q</span>キャンセルはできますか？</summary><div class="a"><i>A</i><p>前日までにLINEでご連絡ください。</p></div></details>
     </div>
   </div>
 </section>
@@ -250,7 +278,7 @@
       <h3><span class="s">からだにプラス、こころにプラス。</span>心プラスでお待ちしています</h3>
       <p style="font-size:14px;margin:14px 0 22px">公式LINEでは、こずちゃんとゆかちゃんの<b>ここでしか読めない発酵食の話</b>をお届けしています。ご予約・ご相談もLINEからどうぞ。</p>
       <a class="btn" href="https://line.me/R/ti/p/%40kix8116s" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.73 2 10.32c0 4.1 3.55 7.54 8.35 8.2.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.7-3.36 7.78-5.75C21.1 13.9 22 12.2 22 10.32 22 5.73 17.52 2 12 2z"/></svg>LINEで予約する</a>
-      <p style="font-size:12px;color:var(--muted);margin-top:14px">LINE公式アカウント KOKORO＋（@kix8116s）／Instagram<span class="tbd">〔要確認〕</span></p>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">LINE公式アカウント KOKORO＋（@kix8116s）／Instagram</p>
     </div>
   </div>
 </section>

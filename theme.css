@@ -10,3 +10,7 @@
 .pgbar{background:linear-gradient(90deg,#E48AA0,#F7C3D1)!important}
 .js .mk{background-image:linear-gradient(transparent 58%,#FFD3DF 58%)!important}
 .cta-band{background-image:linear-gradient(180deg,#FFF6F8,#FDE6EC)!important}
+
+/* ロゴ画像 (2026-10-30) */
+.logo img{display:block;height:46px;width:auto}
+@media(max-width:820px){.logo img{height:36px}}
