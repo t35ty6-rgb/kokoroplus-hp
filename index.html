@@ -41,11 +41,11 @@
 .s4 p{font-size:13px;color:var(--muted);line-height:1.8}
 @media(max-width:760px){.steps4{grid-template-columns:1fr 1fr}}
 .okz{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:28px auto 0}
-.okz-c{background:#fff;border:2px solid var(--line);border-radius:22px;padding:24px 20px;text-align:center}
-.okz-i{display:inline-flex;width:56px;height:56px;border-radius:50%;background:var(--orange-soft);align-items:center;justify-content:center;font-size:26px}
+.okz-c{background:#fff;border:2px solid var(--line);border-radius:22px;padding:20px 20px 24px;text-align:center}
+.okz-ph{aspect-ratio:1/1;overflow:hidden;border-radius:16px;margin:-8px -6px 4px;background:#fff}.okz-ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
 .okz-c h3{font-size:18px;color:var(--ink);margin:12px 0 8px;line-height:1.5}.okz-c p{font-size:14px;margin:0}
 .okz-pt{max-width:620px;margin:22px auto}
-@media(max-width:760px){.okz{grid-template-columns:1fr}.menu3{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.okz{grid-template-columns:1fr}.okz-ph{aspect-ratio:4/3}.menu3{grid-template-columns:1fr 1fr}}
 </style>
 <link rel="stylesheet" href="ui.css">
 <link rel="stylesheet" href="theme.css?v=1030">
@@ -132,7 +132,7 @@
           <span class="nb">04</span>
           <p class="sub">お子さまをお預かり</p><span class="wait">キャンセル待ち</span><h3>託児サービス</h3>
           <p>お仕事やお出かけのあいだ、<span class="mk">お子さまをお預かり</span>します。対象年齢はご相談ください。</p>
-          <p class="pr">¥2,000<small>／120分</small></p>
+          <p class="pr" style="font-size:15px">料金・時間はLINEでご案内します</p>
           <p class="wait-note">ただいま満席です。LINEでキャンセル待ちを受け付けています。</p>
           <a class="more" href="takuji.html">託児を詳しく</a>
         </div>
@@ -186,9 +186,9 @@
     <h2 class="h2 ttl"><span>真空パックの<span class="or">おうちごはん</span></span></h2>
     <p class="lead"><b style="display:block;font-size:21px;color:var(--ink);margin-bottom:6px">離れていても、わが家の味を。</b>無添加・発酵食でつくった家庭のごはんを、真空パックでお届けします。<br>温めるだけで、手づくりの一品がそろいます。</p>
     <div class="okz">
-      <div class="okz-c"><span class="okz-i">🍳</span><h3>働くママの<br>夕飯づくりに</h3><p>帰ってから一からつくらなくても大丈夫。あと一品を、安心のおかずで。</p></div>
-      <div class="okz-c"><span class="okz-i">🎒</span><h3>離れて暮らす<br>子どもたちへ</h3><p>ひとり暮らしの子に、実家の味を。忙しくても、ちゃんと食べてほしいから。</p></div>
-      <div class="okz-c"><span class="okz-i">🏠</span><h3>単身赴任の<br>大切な人へ</h3><p>外食やコンビニが続く毎日に、からだにやさしい家庭のごはんを届けます。</p></div>
+      <div class="okz-c"><div class="okz-ph"><img src="img/okz-mama.jpg" alt="真空パックのおかずをお皿に盛るお母さんと子ども" loading="lazy"></div><h3>働くママの<br>夕飯づくりに</h3><p>帰ってから一からつくらなくても大丈夫。あと一品を、安心のおかずで。</p></div>
+      <div class="okz-c"><div class="okz-ph"><img src="img/okz-kids.jpg" alt="実家から届いた真空パックのおかずを喜ぶひとり暮らしの学生" loading="lazy"></div><h3>離れて暮らす<br>子どもたちへ</h3><p>ひとり暮らしの子に、実家の味を。忙しくても、ちゃんと食べてほしいから。</p></div>
+      <div class="okz-c"><div class="okz-ph"><img src="img/okz-papa.jpg" alt="家庭のおかずを食べてほっとする単身赴任の男性" loading="lazy"></div><h3>単身赴任の<br>大切な人へ</h3><p>外食やコンビニが続く毎日に、からだにやさしい家庭のごはんを届けます。</p></div>
     </div>
     <ul class="dog-pt okz-pt">
       <li><b>無添加</b>保存料・化学調味料を使いません</li>
