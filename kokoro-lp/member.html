@@ -165,10 +165,10 @@ body{background:var(--paper);padding-bottom:calc(84px + env(safe-area-inset-bott
 
   <div class="sh" id="liveSec"><h2>次の会員ライブ</h2></div>
   <div class="live">
-    <span class="dt"><span>10月<b>25</b>土</span></span>
+    <span class="dt"><span>近日<b>開催</b></span></span>
     <div>
       <h3>はじめての塩麹づくり</h3>
-      <p>10:00〜11:00・Zoom<br>材料：米麹200g・塩60g・水300ml</p>
+      <p>日時は決まりしだいLINEでお知らせします・Zoom<br>材料：米麹200g・塩60g・水300ml</p>
       <span class="cd" id="cd" aria-live="polite"></span>
     </div>
     <a class="btn btn--s" href="#">参加URLを開く</a>
@@ -320,8 +320,8 @@ document.querySelectorAll('.tbar button').forEach(b=>b.onclick=()=>{const k=b.da
  document.getElementById(k).scrollIntoView({behavior:'smooth',block:'start'});});
 
 // ライブまでのカウントダウン（サンプル日時）
-const LIVE=new Date('2026-10-25T10:00:00+09:00');
-function tick(){const s=Math.max(0,(LIVE-Date.now())/1000|0);const d=s/86400|0,h=s%86400/3600|0,m=s%3600/60|0;$('cd').innerHTML=s?`あと <span>${d}日</span><span>${h}時間</span><span>${m}分</span>`:'ただいま開催中';}
+const LIVE=null;
+function tick(){if(!LIVE){$('cd').textContent='';return}const s=Math.max(0,(LIVE-Date.now())/1000|0);const d=s/86400|0,h=s%86400/3600|0,m=s%3600/60|0;$('cd').innerHTML=s?`あと <span>${d}日</span><span>${h}時間</span><span>${m}分</span>`:'ただいま開催中';}
 tick();setInterval(tick,30000);
 stats();draw();
 </script>
